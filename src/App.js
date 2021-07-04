@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import Login from './Pages/Login';
+import Tasks from './Pages/Tasks';
+import CreateTask from './Pages/CreateTask'
+import CreateUser from './Pages/CreateUser';
+import Users from './Pages/Users'
+import Layout from './Components/Layout/Layout';
+import { TaskContextProvider } from './context/task-context';
+import AssignedTask from './Pages/AssignedTask';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Switch>
+        <Route path="/" exact>
+          {/* <RedirectPropsz to="/login" /> */}
+          <Login />
+        </Route>
+        <Route path="/tasks" exact>
+          <Tasks />
+        </Route>
+        <Route path="/createTask">
+          <CreateTask />
+        </Route>
+        <Route path="/users">
+            <Users />
+        </Route>
+        <Route path="/createUser">
+          <CreateUser />
+        </Route>
+        <Route path="/assigned-task">
+          <AssignedTask />
+        </Route>
+        <Route path="*">
+        </Route>
+      </Switch>
+    </Layout>
   );
 }
 
